@@ -8,7 +8,7 @@ const PopUp=({setShowPopUp})=>{
     let id=uuid4();
     console.log(myState);
     const dispatch=useDispatch();
-    const {name,setName,userName,setUserName,updateFlag,setUpdateFlag}=useContext(Context);
+    const {name,setName,userName,setUserName,updateFlag,setUpdateFlag,editingId}=useContext(Context);
     const [buttonFlag,setButtonFlag]=useState(true);
     useEffect(()=>{
         if(name && userName){
@@ -30,8 +30,8 @@ const PopUp=({setShowPopUp})=>{
                 setShowPopUp(false);
                 setName("");
                 setUserName("");
-                updateFlag?dispatch({type:"Edit",payload:{id,name,userName,}}):
-                dispatch({type:"Submit",payload:{name:name,userName:userName,id:id,setUpdateFlag}});
+                updateFlag?dispatch({type:"Edit",payload:{id:editingId,name,userName,setUpdateFlag}}):
+                dispatch({type:"Submit",payload:{name:name,userName:userName,id:id}});
             }
                 }>Submit
             </button>
