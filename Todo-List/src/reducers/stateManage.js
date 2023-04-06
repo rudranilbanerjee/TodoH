@@ -13,8 +13,6 @@ const manageArray = (state = list, action) => {
         todo.userName=userName;
         newArray.push(todo);
         return newArray;
-        setUpdateFlag(false);
-        return state;
     }
     case "Submit":
       state.push(action.payload);
